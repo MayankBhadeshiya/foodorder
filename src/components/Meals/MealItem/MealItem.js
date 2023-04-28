@@ -1,7 +1,5 @@
 import { useContext } from 'react';
-
 import MealItemForm from './MealItemForm';
-import classes from './MealItem.module.css';
 import CartContext from '../../../store/cart-context';
 
 const MealItem = (props) => {
@@ -19,16 +17,19 @@ const MealItem = (props) => {
   };
 
   return (
-    <li className={classes.meal}>
+    <div className='flex flex-col bg-white p-2 rounded rounded-lg'>
+      <img src="https://images.pexels.com/photos/8992923/pexels-photo-8992923.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" className='h-48 w-auto rounded rounded-lg' />
       <div>
-        <h3>{props.name}</h3>
-        <div className={classes.description}>{props.description}</div>
-        <div className={classes.price}>{price}</div>
+        <h3 className='text-2xl font-bold'>{props.name}</h3>
+        <div className='w-auto italic truncate'>{props.description}</div>
       </div>
-      <div>
-        <MealItemForm onAddToCart={addToCartHandler} />
+      <div className='mt-auto'>
+        <div className='flex justify-between mt-1'>
+          <div className='mt-1 font-bold text-orange-800 text-xl'>{price}</div>
+          <MealItemForm onAddToCart={addToCartHandler} />
+        </div>
       </div>
-    </li>
+    </div>
   );
 };
 

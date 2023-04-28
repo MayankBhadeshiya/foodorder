@@ -77,7 +77,7 @@ function AddMeal() {
 
   
   return (
-    <div style={{ margin: '10px auto', maxWidth: '450px' }}>
+    <div style={{ margin: 'auto', maxWidth: '450px' }}>
       <Card>
         <h2>Add Meal</h2>
         <form className={classes.form} onSubmit={confirmHandler}>

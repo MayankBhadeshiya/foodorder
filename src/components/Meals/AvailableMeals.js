@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-
-import Card from '../UI/Card';
 import MealItem from './MealItem/MealItem';
 import classes from './AvailableMeals.module.css';
 
@@ -69,11 +67,7 @@ const AvailableMeals = () => {
   ));
 
   return (
-    <section className={classes.meals}>
-      <Card>
-        <ul>{mealsList}</ul>
-      </Card>
-    </section>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-6'>{mealsList}</div>
   );
 };
 

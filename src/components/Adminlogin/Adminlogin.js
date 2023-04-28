@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import classes from './Adminlogin.module.css';
-import mealsImage from './meals.jpg';
 import Card from '../UI/Card';
 import c1 from '../Meals/AvailableMeals.module.css';
 import cl from '../Layout/Header.module.css';
 import useInput from '../../hooks/useInput';
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css';
+import { Link } from 'react-router-dom';
+import img2 from '../../assets/meals.jpg'
 
 export default function Adminlogin(props) {
 
@@ -84,16 +85,19 @@ export default function Adminlogin(props) {
         formIsValid && setFormisValid(false);
     }, [formIsValid]);
 
+    const myStyle = {
+        backgroundImage:
+            `url(${img2})`,
+        backgroundSize: 'cover',
+    };
+
   return (
     <div>
           <header className={cl.header}>
-              <h2>ReactMeals</h2>
+              <h2 className='font-bold'>ReactMeals</h2>
           </header>
-          <div className={cl['main-image']}>
-              <img src={mealsImage} alt='A table full of delicious food!' />
-          </div>
-
-          <section className={c1.meals} style={{ maxWidth: '30rem', margin: '-15rem auto' }}>
+          <div style={myStyle} className='h-screen'></div>
+          <section className={c1.meals} style={{ maxWidth: '30rem', margin: '-45rem auto' }}>
               <Card style={{ zIndex: 100 }}>
                   <div>
                       <h2 style={{ textAlign: "center" }}>Admin Login</h2>
@@ -116,6 +120,9 @@ export default function Adminlogin(props) {
                           <button className={classes.submit}>Login</button>
                       </div>
                   </form>
+                  <div style={{ textAlign: "center" }}>
+                      <p><span className='text-blue-600'><Link to="/">User Login</Link></span></p>
+                  </div>
               </Card>
           </section>
     </div>

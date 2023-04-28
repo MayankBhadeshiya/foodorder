@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import classes from './Login.module.css';
-import mealsImage from './meals.jpg';
 import Card from '../UI/Card';
 import c1 from '../Meals/AvailableMeals.module.css';
 import cl from '../Layout/Header.module.css';
@@ -8,6 +7,7 @@ import useInput from '../../hooks/useInput';
 import { Link } from 'react-router-dom';
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css';
+import img2 from '../../assets/meals.jpg'
 
 export default function Login(props) {
 
@@ -28,16 +28,14 @@ export default function Login(props) {
         valueChangeHandler: signinpassChangedHandler,
         inputBlurHandler: signinpassBlurHandler
     } = useInput((value) => value.trim() !== '' && value.length > 6);
-    
-    const checkuser = (data) =>
-    {
+
+    const checkuser = (data) => {
         const setvalue = () => {
             props.setIsLoggedIn(true);
-            localStorage.setItem("isLoggedIn",1);
+            localStorage.setItem("isLoggedIn", 1);
         }
         console.log(data);
-        for(let obj in data)
-        {
+        for (let obj in data) {
             data[obj].email === signinenteredemail && data[obj].Password === signinenteredpass && setvalue();
         }
     }
@@ -50,14 +48,13 @@ export default function Login(props) {
             .then((response) => response.json())
             .then((y) => checkuser(y))
     };
-    
+
     const confirmHandler = (event) => {
         event.preventDefault();
-        if(!formisValid)
-        {
+        if (!formisValid) {
             usercheck();
         }
-        else{
+        else {
             toastr.options = {
                 "closeButton": true,
                 "newestOnTop": false,
@@ -93,43 +90,46 @@ export default function Login(props) {
     }, [formIsValid]);
 
 
-    return (
-        <div>
-            <header className={cl.header}>
-                <h2>ReactMeals</h2>
-            </header>
-            <div className={cl['main-image']}>
-                <img src={mealsImage} alt='A table full of delicious food!' />
-            </div>
+    const myStyle = {
+        backgroundImage:
+            `url(${img2})`,
+        backgroundSize: 'cover',
+    };
 
-            <section className={c1.meals} style={{ maxWidth: '30rem', margin: '-15rem auto' }}>
+    return (
+        <div >
+            <header className={cl.header}>
+                <h2 className='font-bold'>ReactMeals</h2>
+            </header>
+            <div style={myStyle} className='h-screen'></div>
+            <section className={c1.meals} style={{ maxWidth: '30rem', margin: '-45rem auto' }}>
                 <Card style={{ zIndex: 100 }}>
                     <div>
-                        <h2 style={{textAlign:"center"}}>Login</h2>
+                        <h2 style={{ textAlign: "center" }}>Login</h2>
                     </div>
                     <form className={classes.form} onSubmit={confirmHandler}>
                         <div className={signinemailControlClasses}>
                             <label htmlFor='name'>Email</label>
                             <input type='email' id='name' value={signinenteredemail} onChange={signinemailChangedHandler}
-                                onBlur={signinemailBlurHandler} style={{ width: "100%", height: "40px" }}/>
-                            
+                                onBlur={signinemailBlurHandler} style={{ width: "100%", height: "40px" }} />
+
                         </div>
                         <br></br>
                         <div className={signinpassControlClasses}>
                             <label htmlFor='street'>Password</label>
                             <input type='password' id='street' value={signinenteredpass} onChange={signinpassChangedHandler}
-                                onBlur={signinpassBlurHandler} style={{ width: "100%", height:"40px"}}/>
+                                onBlur={signinpassBlurHandler} style={{ width: "100%", height: "40px" }} />
                         </div>
                         <br></br>
                         <div className={classes.actions}>
-                                <button className={classes.submit}>Login</button>
+                            <button className={classes.submit}>Login</button>
                         </div>
                     </form>
-                    <div style={{textAlign:"center"}}>
-                        <p>Don't have an Account? <Link to="/SignUp" style={{textDecoration:"none"}}>SignUp</Link></p>
+                    <div style={{ textAlign: "center" }}>
+                        <p>Don't have an Account? <span className='text-blue-600'><Link to="/SignUp">SignUp</Link></span></p>
                     </div>
-                    <div style={{textAlign:"center"}}>
-                        <p><Link to="/Admin" style={{textDecoration:"none"}}>Admin Login</Link></p>
+                    <div style={{ textAlign: "center" }}>
+                        <p><span className='text-blue-600'><Link to="/Admin">Admin Login</Link></span></p>
                     </div>
                 </Card>
             </section>

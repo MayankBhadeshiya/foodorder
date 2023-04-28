@@ -47,18 +47,21 @@ function TR(props) {
 export default function Table(props) {
     const row = props.data.map(d => { return (<TR data={d} key={d.id}></TR>) })
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>orderID</th>
-                    <th>User Information</th>
-                    <th>orderitems</th>
-                    <th>Total Bill</th>
-                </tr>
-            </thead>
-            <tbody>
-                {row}
-            </tbody>
-        </table>
+        <div className=''>
+            <p className='text-4xl font-bold text-black text-center mb-2'>Orders</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>orderID</th>
+                        <th>User Information</th>
+                        <th>orderitems</th>
+                        <th>Total Bill</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {row}
+                </tbody>
+            </table>
+        </div>
     )
 }
