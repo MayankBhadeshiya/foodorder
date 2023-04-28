@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import Header from '../Layout/Header';
+// import Header from '../Layout/Header';
 import Meals from '../Meals/Meals';
 import Cart from '../Cart/Cart';
 import CartProvider from '../../store/CartProvider';
+import Homenavbar from '../Homenavbar/Homenavbar';
 
 export default function Home(props) {
     const [cartIsShown, setCartIsShown] = useState(false);
@@ -22,7 +23,7 @@ export default function Home(props) {
   return (
       <CartProvider>
           {cartIsShown && <Cart onClose={hideCartHandler} />}
-          <Header onShowCart={showCartHandler} log={logout} />
+          <Homenavbar onShowCart={showCartHandler} log={logout} />
           <main>
               <Meals />
           </main>
