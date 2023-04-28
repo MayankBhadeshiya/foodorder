@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import classes from './Login.module.css';
 import Card from '../UI/Card';
-import c1 from '../Meals/AvailableMeals.module.css';
 import cl from '../Layout/Header.module.css';
 import useInput from '../../hooks/useInput';
 import { Link } from 'react-router-dom';
@@ -94,15 +93,15 @@ export default function Login(props) {
         backgroundImage:
             `url(${img2})`,
         backgroundSize: 'cover',
+        
     };
 
     return (
-        <div >
+        <div style={myStyle}>
             <header className={cl.header}>
                 <h2 className='font-bold'>ReactMeals</h2>
             </header>
-            <div style={myStyle} className='h-screen'></div>
-            <section className={c1.meals} style={{ maxWidth: '30rem', margin: '-45rem auto' }}>
+            <section style={{ maxWidth: '30rem', margin: 'auto' }} className='h-screen pt-48'>
                 <Card style={{ zIndex: 100 }}>
                     <div>
                         <h2 style={{ textAlign: "center" }}>Login</h2>
