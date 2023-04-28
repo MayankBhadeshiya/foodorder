@@ -99,7 +99,7 @@ export default function Signup() {
   return (
       <div style={myStyle}>
           <header className={cl.header}>
-              <h2 className='font-bold'>ReactMeals</h2>
+              <h2 className='font-bold text-3xl'>ReactMeals</h2>
           </header>
           <section style={{ maxWidth: '30rem', margin: 'auto' }} className='h-screen pt-48'>
               <Card style={{ zIndex: 100 }}>

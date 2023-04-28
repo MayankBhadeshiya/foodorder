@@ -24,7 +24,7 @@ export default function Admin(props) {
     return (
         <div style={myStyle} className='h-screen overflow-auto'>
             <header className={classes.header}>
-                <h2 className='font-bold'>Admin Panel</h2>
+                <h2 className='font-bold text-3xl'>Admin Panel</h2>
                 <div style={{display:"flex"}}>
                     <button onClick={handleClick}>{btn}</button>
                     <button style={{ backgroundColor: '#8a2b06', border: "none" }} onClick={logoutHandler}><i className="fa-solid fa-right-from-bracket fa-2xl"></i></button>
