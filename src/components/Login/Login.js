@@ -31,11 +31,14 @@ export default function Login(props) {
     
     const checkuser = (data) =>
     {
+        const setvalue = () => {
+            props.setIsLoggedIn(true);
+            localStorage.setItem("isLoggedIn",1);
+        }
         console.log(data);
         for(let obj in data)
         {
-            data[obj].email === signinenteredemail && data[obj].Password === signinenteredpass && props.setIsLoggedIn(true);
-            localStorage.setItem("isLoggedIn",1);
+            data[obj].email === signinenteredemail && data[obj].Password === signinenteredpass && setvalue();
         }
     }
 
