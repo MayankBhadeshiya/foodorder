@@ -128,6 +128,9 @@ export default function Login(props) {
                     <div style={{textAlign:"center"}}>
                         <p>Don't have an Account? <Link to="/SignUp" style={{textDecoration:"none"}}>SignUp</Link></p>
                     </div>
+                    <div style={{textAlign:"center"}}>
+                        <p><Link to="/Admin" style={{textDecoration:"none"}}>Admin Login</Link></p>
+                    </div>
                 </Card>
             </section>
         </div>
