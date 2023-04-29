@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Meals from '../Meals/Meals';
 import Cart from '../Cart/Cart';
 import CartProvider from '../../store/CartProvider';
-import Homenavbar from '../Homenavbar/Homenavbar';
+import Homenavbar1 from '../Homenavbar/Homenavbar1';
 
 export default function Home(props) {
     const [cartIsShown, setCartIsShown] = useState(false);
@@ -22,7 +22,7 @@ export default function Home(props) {
   return (
       <CartProvider>
           {cartIsShown && <Cart onClose={hideCartHandler} />}
-          <Homenavbar onShowCart={showCartHandler} log={logout} />
+          <Homenavbar1 onShowCart={showCartHandler} log={logout} />
           <main>
               <Meals />
           </main>
