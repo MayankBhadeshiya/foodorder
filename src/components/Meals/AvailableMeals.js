@@ -4,13 +4,16 @@ import classes from './AvailableMeals.module.css';
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
+  const [Data, setData] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
 
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(
-        'https://foodorder-e232d-default-rtdb.firebaseio.com/meals.json'
+        'https://foodorder-749de-default-rtdb.firebaseio.com/Categories.json'
       );
 
       if (!response.ok) {
@@ -19,27 +22,51 @@ const AvailableMeals = () => {
 
       const responseData = await response.json();
 
+      
+      const loadeddata = [];
+
+      for (const data in responseData) {
+        loadeddata.push(responseData[data]);
+      }
+      
+      const loadedcategories = [];
+
+      const loadedSubcategories = [];
+
       const loadedMeals = [];
 
-      for (const key in responseData) {
-        loadedMeals.push({
-          id: key,
-          name: responseData[key].name,
-          description: responseData[key].description,
-          price: responseData[key].price,
-        });
+      for (const data in loadeddata) {
+        const d = loadeddata[data]
+        for (const data in d) {
+          const d1 = d[data]
+          for (const data in d1) {
+            loadedMeals.push({
+              id: d1[data].name,
+              img: d1[data].img,
+              name: d1[data].name,
+              description: d1[data].description,
+              price: Number(d1[data].price),
+            })
+          }
+          loadedSubcategories.push(d1)
+        }
+        loadedcategories.push(d)
       }
-
-      setMeals(loadedMeals);
+      setMeals(loadedMeals); 
+      setSubcategories(loadedSubcategories)
+      setCategories(loadedcategories)
+      setData(loadeddata)
       setIsLoading(false);
     };
-
+   
+    
     fetchMeals().catch((error) => {
       setIsLoading(false);
       setHttpError(error.message);
     });
   }, []);
 
+  
   if (isLoading) {
     return (
       <section className={classes.MealsLoading}>
@@ -55,11 +82,12 @@ const AvailableMeals = () => {
       </section>
     );
   }
-
   const mealsList = meals.map((meal) => (
+    
     <MealItem
       key={meal.id}
       id={meal.id}
+      img={meal.img}
       name={meal.name}
       description={meal.description}
       price={meal.price}

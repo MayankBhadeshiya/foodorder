@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './Signup.module.css';
-import Card from '../UI/Card';
 import cl from '../Layout/Header.module.css';
 import useInput from '../../hooks/useInput';
 import toastr from 'toastr'
@@ -9,7 +8,7 @@ import { Link } from 'react-router-dom';
 import img2 from '../../assets/meals.jpg'
 
 export default function Signup() {
-    
+
     const [formisValid, setFormisValid] = useState(true);
     const [statusCode, setStatusCode] = useState(0);
     const [inputClear, setInputClear] = useState(true);
@@ -38,13 +37,11 @@ export default function Signup() {
                 Password: enteredpass
             }),
         })
-        .then((response) => setStatusCode(response.status))
+            .then((response) => setStatusCode(response.status))
     };
 
-    useEffect(()=>
-    {
-        if(statusCode === 200)
-        {
+    useEffect(() => {
+        if (statusCode === 200) {
             toastr.options = {
                 "closeButton": true,
                 "newestOnTop": false,
@@ -64,12 +61,11 @@ export default function Signup() {
             toastr.clear();
             setTimeout(() => toastr.success(`Registration Done Successfully`), 300);
         }
-    },[statusCode]);
+    }, [statusCode]);
 
     const confirmHandler = (event) => {
         event.preventDefault();
-        if(!formisValid)
-        {
+        if (!formisValid) {
             userRegistration();
             setInputClear(false);
             setFormisValid(true);
@@ -85,10 +81,9 @@ export default function Signup() {
         emailIsValid &&
         passIsValid;
 
-    useEffect(()=>
-    {
+    useEffect(() => {
         formIsValid && setFormisValid(false);
-    },[formIsValid]);
+    }, [formIsValid]);
 
     const myStyle = {
         backgroundImage:
@@ -96,38 +91,38 @@ export default function Signup() {
         backgroundSize: 'cover',
     };
 
-  return (
-      <div style={myStyle}>
-          <header className={cl.header}>
-              <h2 className='font-bold text-3xl'>ReactMeals</h2>
-          </header>
-          <section style={{ maxWidth: '30rem', margin: 'auto' }} className='h-screen pt-48'>
-              <Card style={{ zIndex: 100 }}>
-                  <div>
-                      <h2 style={{ textAlign: "center" }}>SignUp</h2>
-                  </div>
-                  <form className={classes.form} onSubmit={confirmHandler}>
-                      <div className={emailControlClasses}>
-                          <label htmlFor='name'>Email</label>
-                          <input type='email' id='name' value={inputClear ? enteredemail: ''} onChange={emailChangedHandler}
-                              onBlur={emailBlurHandler} style={{ width: "100%", height: "40px" }} />
-                      </div>
-                      <br></br>
-                      <div className={passControlClasses}>
-                          <label htmlFor='street'>Password</label>
-                          <input type='password' id='street' value={inputClear ? enteredpass : ''} onChange={passChangedHandler}
-                              onBlur={passBlurHandler} style={{ width: "100%", height: "40px" }} />
-                      </div>
-                      <br></br>
-                      <div className={classes.actions}>
-                          <button className={classes.submit} disabled={formisValid}>Submit</button>
-                      </div>
-                  </form>
-                  <div style={{ textAlign: "center" }}>
-                      <p>Already have an Account? <span className='text-blue-600'><Link to="/">Login</Link></span></p>
-                  </div>
-              </Card>
-          </section>
-    </div>
-  )
+    return (
+        <div style={myStyle}>
+            <header className={cl.header}>
+                <h2 className='font-bold text-3xl'>ReactMeals</h2>
+            </header>
+            <section style={{ maxWidth: '30rem', margin: 'auto' }} className='h-screen pt-48'>
+                <div className='shadow p-4 rounded-xl bg-white' style={{ zIndex: 100 }}>
+                    <div>
+                        <h2 style={{ textAlign: "center" }}>SignUp</h2>
+                    </div>
+                    <form className={classes.form} onSubmit={confirmHandler}>
+                        <div className={emailControlClasses}>
+                            <label htmlFor='name'>Email</label>
+                            <input type='email' id='name' value={inputClear ? enteredemail : ''} onChange={emailChangedHandler}
+                                onBlur={emailBlurHandler} style={{ width: "100%", height: "40px" }} />
+                        </div>
+                        <br></br>
+                        <div className={passControlClasses}>
+                            <label htmlFor='street'>Password</label>
+                            <input type='password' id='street' value={inputClear ? enteredpass : ''} onChange={passChangedHandler}
+                                onBlur={passBlurHandler} style={{ width: "100%", height: "40px" }} />
+                        </div>
+                        <br></br>
+                        <div className={classes.actions}>
+                            <button className={classes.submit} disabled={formisValid}>Submit</button>
+                        </div>
+                    </form>
+                    <div style={{ textAlign: "center" }}>
+                        <p>Already have an Account? <span className='text-blue-600'><Link to="/">Login</Link></span></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    )
 }

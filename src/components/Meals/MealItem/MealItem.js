@@ -18,7 +18,7 @@ const MealItem = (props) => {
 
   return (
     <div className='flex flex-col bg-white p-2 rounded rounded-lg'>
-      <img src="https://images.pexels.com/photos/8992923/pexels-photo-8992923.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" className='h-48 w-auto rounded rounded-lg' />
+      <img src={props.img} alt="" className='h-48 w-auto rounded rounded-lg' />
       <div>
         <h3 className='text-2xl font-bold'>{props.name}</h3>
         <div className='w-auto italic truncate'>{props.description}</div>

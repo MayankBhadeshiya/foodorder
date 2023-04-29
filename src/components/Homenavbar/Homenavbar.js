@@ -26,8 +26,7 @@ export default function Homenavbar(props) {
         .then((y) => setSubcategoriesdata((z) => [...z, y]));
     }
   }, [data]);
-
-  console.log(subcategoriesdata)
+  
   useEffect(() => {
     setData(null);
     fetch(
@@ -36,7 +35,6 @@ export default function Homenavbar(props) {
     )
       .then((response) => response.json())
       .then((y) => setData(y));
-
   }, []);
 
   return (

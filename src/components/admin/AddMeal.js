@@ -1,6 +1,5 @@
 import React from 'react';
 import useInput from '../../hooks/useInput';
-import Card from '../UI/Card';
 import classes from './AddMeal.module.css';
 
 function AddMeal() {
@@ -75,10 +74,10 @@ function AddMeal() {
   const priceControlClasses = `${classes.control} ${priceInputHasError ? classes.invalid : ''
     }`;
 
-  
+
   return (
     <div style={{ margin: 'auto', maxWidth: '450px' }}>
-      <Card>
+      <div className='shadow p-4 rounded-xl bg-white'>
         <h2>Add Meal</h2>
         <form className={classes.form} onSubmit={confirmHandler}>
           <div className={nameControlClasses}>
@@ -100,7 +99,7 @@ function AddMeal() {
             {formIsValid && <button className={classes.submit}>Confirm</button>}
           </div>
         </form>
-      </Card>
+      </div>
     </div>
   );
 }
