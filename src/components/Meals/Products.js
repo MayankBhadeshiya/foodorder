@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MealItem from './MealItem/MealItem';
 
-export default function (props) {
+export default function Products(props) {
 
     const [subsubcategoriesdata, setSubsubcategoriesdata] = useState([]);
 
@@ -12,14 +12,13 @@ export default function (props) {
         }
     }, [])
 
-  return (
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-6'>
-        {subsubcategoriesdata.map((obj)=>
-        {
-            return(
-                <MealItem key={obj.data.name} id={obj.data.name} name={obj.data.name} description={obj.data.description} price={obj.data.price} img={obj.data.img}></MealItem>
-            )
-        })}
-    </div>
-  )
+    return (
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-6'>
+            {subsubcategoriesdata.map((obj) => {
+                return (
+                    <MealItem key={obj.data.name} id={obj.data.name} name={obj.data.name} description={obj.data.description} price={obj.data.price} img={obj.data.img}></MealItem>
+                )
+            })}
+        </div>
+    )
 }

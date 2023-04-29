@@ -32,13 +32,13 @@ export default function AvailableMeals() {
         {categoriesdata.map((obj)=>
         {
           return(
-            <>
+            <div  key={obj.category}>
               <section id={obj.category}>
                 <h1 className='text-2xl font-bold uppercase ms-6'>{obj.category}</h1>
                 <div className='border border-2 mx-4'></div>
                 <Subcategory data={obj.data}></Subcategory>
               </section>
-            </>
+            </div>
           )
         })}
     </div>

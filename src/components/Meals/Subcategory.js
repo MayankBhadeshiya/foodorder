@@ -11,9 +11,6 @@ export default function Subcategory(props) {
             setSubcategoriesdata((prev) => [...prev, { category: obj, data: props.data[obj] }]);
         }
     }, [])
-
-    console.log("Hello", subcategoriesdata);
-
     return (
         <>
             {subcategoriesdata.map((obj) => {

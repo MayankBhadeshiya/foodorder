@@ -12,7 +12,7 @@ export default function Homenavbar(props) {
   const [data, setData] = useState(null);
   const [categoriesdata, setCategoriesdata] = useState([]);
   const [subcategoriesdata, setSubcategoriesdata] = useState([]);
-
+  console.log(subcategoriesdata)
   useEffect(() => {
     setCategoriesdata([]);
     setSubcategoriesdata([]);
