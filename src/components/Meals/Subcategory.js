@@ -12,15 +12,15 @@ export default function Subcategory(props) {
         }
     }, [props.data])
     return (
-        <>
+        <div >
             {subcategoriesdata.map((obj) => {
                 return (
-                    <div key={obj.category}>
-                        <h1 className='text-start text-xl font-bold uppercase ms-6 underline underline-offset-4'>{obj.category}</h1>
+                    <div key={obj.category} className='mt-12'>
+                        <p className='text-white mt-5 text-start text-xl font-bold uppercase ms-6 underline underline-offset-4'>{obj.category}</p>
                         <Products data={obj.data}></Products>
                     </div>
                 )
             })}
-        </>
+        </div>
     )
 }
