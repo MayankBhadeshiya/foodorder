@@ -37,7 +37,7 @@ export default function Homenavbar(props) {
       .then((y) => setData(y));
   }, []);
 
-  console.log(subcategoriesdata)
+  // console.log(subcategoriesdata)
   return (
     <div>
       <header className={classes.header}>
