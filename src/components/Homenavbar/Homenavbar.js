@@ -25,10 +25,9 @@ export default function Homenavbar(props) {
         .then((response) => response.json())
         .then((y) => setSubcategoriesdata((z) => [...z, y]));
     }
-    console.log(categoriesdata, subcategoriesdata);
   }, [data]);
-  
 
+  console.log(subcategoriesdata)
   useEffect(() => {
     setData(null);
     fetch(
@@ -37,7 +36,7 @@ export default function Homenavbar(props) {
     )
       .then((response) => response.json())
       .then((y) => setData(y));
-      
+
   }, []);
 
   return (
@@ -45,14 +44,12 @@ export default function Homenavbar(props) {
       <header className={classes.header}>
         <div className="flex">
           <h2 className="font-bold text-3xl mt-2">ReactMeals</h2>
-          <div className="relative group">
-            {categoriesdata.map((obj, i) => {
+          <div className="relative group hidden 2xl:flex">
+            {categoriesdata.map((obj) => {
               return (
-                <>
-                  <button className="flex flex-row items-center w-full px-4 py-4 mt-2 text-base font-bold text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none font-montserrat">
-                    <span>{obj}</span>
-                  </button>
-                </>
+                <button key={obj} className="flex flex-row items-center w-full px-1  py-4 mt-2 font-bold text-left uppercase bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 focus:outline-none font-montserrat">
+                  <span >{obj}</span>
+                </button>
               );
             })}
           </div>
