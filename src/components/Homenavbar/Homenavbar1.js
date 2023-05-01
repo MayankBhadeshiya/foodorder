@@ -50,7 +50,7 @@ export default function Homenavbar(props) {
         <div>
             <header className={classes.header}>
                 <div className="flex">
-                    <h2 className="font-bold text-3xl mt-5 mr-10">ReactMeals</h2>
+                    <h2 className="font-bold text-3xl mt-5 mr-10">FoodOrder</h2>
                     <div className="relative group hidden 2xl:flex">
                         {categoriesdata.map((obj, i) => {
                             return (
@@ -60,11 +60,11 @@ export default function Homenavbar(props) {
                                         <div className="group inline-block relative">
                                             <button
                                                 className="font-semibold py-2 px-4 rounded inline-flex items-center"
-                                                onClick={setdropdownHandler} value={i} style={{ backgroundColor: '#8a2b06'}}>
+                                                onClick={setdropdownHandler} value={i} style={{ backgroundColor: '#8a2b06' }}>
                                                 {obj}
-                                                
+
                                             </button>
-                                            <ul className="absolute hidden text-gray-700"  value={i} id={`down-${i}`}>
+                                            <ul className="absolute hidden text-gray-700" value={i} id={`down-${i}`}>
                                                 {/* <li className="">
                                                     <a
                                                         className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"

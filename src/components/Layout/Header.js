@@ -14,7 +14,7 @@ const Header = (props) => {
   return (
     <Fragment>
       <header className={classes.header}>
-        <h2 className='font-bold text-3xl'>ReactMeals</h2>
+        <h2 className='font-bold text-3xl'>FoodOrder</h2>
         <div style={{ display: "flex" }}>
           <HeaderCartButton onClick={props.onShowCart} />
           <button className={classes.bt} onClick={logoutHandler}><i className="fa-solid fa-right-from-bracket fa-2xl"></i></button>

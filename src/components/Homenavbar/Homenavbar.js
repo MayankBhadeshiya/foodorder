@@ -26,7 +26,7 @@ export default function Homenavbar(props) {
         .then((y) => setSubcategoriesdata((z) => [...z, y]));
     }
   }, [data]);
-  
+
   useEffect(() => {
     setData(null);
     fetch(
@@ -42,7 +42,7 @@ export default function Homenavbar(props) {
     <div>
       <header className={classes.header}>
         <div className="flex">
-          <h2 className="font-bold text-3xl mt-2">ReactMeals</h2>
+          <h2 className="font-bold text-3xl mt-2">FoodOrder</h2>
           <div className="relative group hidden 2xl:flex">
             {categoriesdata.map((obj) => {
               return (
