@@ -93,6 +93,8 @@ function AddMeal() {
 
     addMealHandler(meal, selectedcategory, selectedsubcategory);
 
+    event.target.elements.Category.value = '';
+    event.target.elements.SubCategory.value = '';
     resetName();
     resetimg();
     resetDescription();
