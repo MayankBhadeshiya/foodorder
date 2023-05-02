@@ -5,7 +5,7 @@ import useInput from '../../hooks/useInput';
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css';
 import { Link } from 'react-router-dom';
-import img2 from '../../assets/meals.jpg'
+import img2 from '../../assets/meals.jpg';
 
 export default function Signup() {
 

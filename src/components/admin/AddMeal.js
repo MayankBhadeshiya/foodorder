@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import useInput from '../../hooks/useInput';
 import classes from './AddMeal.module.css';
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css';
 
 function AddMeal() {
   async function addMealHandler(meal, category, subcategory) {
@@ -61,7 +63,24 @@ function AddMeal() {
     event.preventDefault();
 
     if (!formIsValid || event.target.elements.Category.value === '' || event.target.elements.SubCategory.value==='') {
-      alert('Please select Category and Subcategory')
+      toastr.options = {
+                "closeButton": true,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            toastr.clear();
+      setTimeout(() => toastr.warning(`Please select Category and Subcategory`), 300);
       return;
     }
     
