@@ -32,7 +32,6 @@ export default function Login(props) {
             props.setIsLoggedIn(true);
             localStorage.setItem("isLoggedIn", 1);
         }
-        console.log(data);
         for (let obj in data) {
             if(data[obj].email === signinenteredemail && data[obj].Password === signinenteredpass)
             {
@@ -62,7 +61,6 @@ export default function Login(props) {
     }
 
     const usercheck = async () => {
-        console.log("In");
         await fetch('https://react-6784b-default-rtdb.firebaseio.com/users.json', {
             method: 'GET',
         })

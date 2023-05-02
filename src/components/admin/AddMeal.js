@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import useInput from '../../hooks/useInput';
 import classes from './AddMeal.module.css';
 import toastr from 'toastr'
@@ -14,7 +14,7 @@ function AddMeal() {
       }
     });
     const data = await response.json();
-    console.log(data);
+    setData(data);
   }
 
   const {
@@ -62,28 +62,28 @@ function AddMeal() {
   const confirmHandler = (event) => {
     event.preventDefault();
 
-    if (!formIsValid || event.target.elements.Category.value === '' || event.target.elements.SubCategory.value==='') {
+    if (!formIsValid || event.target.elements.Category.value === '' || event.target.elements.SubCategory.value === '') {
       toastr.options = {
-                "closeButton": true,
-                "newestOnTop": false,
-                "progressBar": false,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
-            toastr.clear();
+        "closeButton": true,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+      toastr.clear();
       setTimeout(() => toastr.warning(`Please select Category and Subcategory`), 300);
       return;
     }
-    
+
     const meal = {
       name: enteredName,
       img: enteredImg,
@@ -92,7 +92,6 @@ function AddMeal() {
     };
 
     addMealHandler(meal, selectedcategory, selectedsubcategory);
-    console.log('data is added')
 
     resetName();
     resetimg();
@@ -116,7 +115,7 @@ function AddMeal() {
   const [selectedcategory, setSelectedcategory] = useState('');
   const [selectedsubcategory, setSelectedsubcategory] = useState('');
   const [filteredsubcategory, setFilteredsubcategory] = useState([]);
-  const [subcategorydata,setSubcategoryData]=useState([])
+  const [subcategorydata, setSubcategoryData] = useState([])
 
   useEffect(() => {
     setCategoriesdata([]);
@@ -125,18 +124,17 @@ function AddMeal() {
     }
   }, [data]);
 
-  useEffect(() =>{
+  useEffect(() => {
     filteredsubcategory.map(obj => {
       return (setSubcategoryData(Object.keys(obj.data)))
     })
   }, [filteredsubcategory])
 
-  useEffect(()=>
-  {
+  useEffect(() => {
     setFilteredsubcategory(categoriesdata.filter((obj) =>
       obj.category === selectedcategory
     ))
-  },[categoriesdata,selectedcategory])
+  }, [categoriesdata, selectedcategory])
 
   useEffect(() => {
     setData(null);
@@ -148,22 +146,20 @@ function AddMeal() {
       .then((y) => setData(y));
   }, []);
 
-  const categoryHandler =(e) =>
-  {
+  const categoryHandler = (e) => {
     setSelectedcategory(e.target.value);
   }
-  const subcategoryHandler =(e) =>
-  {
+  const subcategoryHandler = (e) => {
     setSelectedsubcategory(e.target.value);
   }
 
   const category = categoriesdata.length ? (
-    categoriesdata.map(obj=>{
+    categoriesdata.map(obj => {
       return (<option value={obj.category} key={obj.category}>{obj.category}</option>)
     })
   ) : (<option value='no data'>no data</option>)
   const Subcategory = subcategorydata.length ? (
-    subcategorydata.map(obj=>{
+    subcategorydata.map(obj => {
       return (<option value={obj} key={obj}>{obj}</option>)
     })
   ) : (<option value='no data'>no data</option>)
@@ -174,20 +170,20 @@ function AddMeal() {
         <h2>Add Meal</h2>
         <form className={classes.form} onSubmit={confirmHandler}>
           <div className='flex gap-5'>
-          <div className={classes.control}>
-            <label htmlFor="Category">Category</label>
-            <select name="Category" id="Category" onChange={categoryHandler} >
-              <option value="">select</option>
-              {category}
-            </select>
-          </div>
-          <div className={classes.control}>
-            <label htmlFor="SubCategory">Sub Category</label>
+            <div className={classes.control}>
+              <label htmlFor="Category">Category</label>
+              <select name="Category" id="Category" onChange={categoryHandler} >
+                <option value="">select</option>
+                {category}
+              </select>
+            </div>
+            <div className={classes.control}>
+              <label htmlFor="SubCategory">Sub Category</label>
               <select name="SubCategory" id="SubCategory" onChange={subcategoryHandler} >
                 <option value="">select</option>
                 {Subcategory}
-            </select>
-          </div>
+              </select>
+            </div>
           </div>
           <div className={nameControlClasses}>
             <label htmlFor='name'>Name</label>
