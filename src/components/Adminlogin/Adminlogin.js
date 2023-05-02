@@ -29,8 +29,30 @@ export default function Adminlogin(props) {
 
     const checkuser = (data) => {
         for (let obj in data) {
-            data[obj].email === adminsigninenteredemail && data[obj].Password === adminsigninenteredpass && props.setIsLoggedIn(true);
+            if(data[obj].email === adminsigninenteredemail && data[obj].Password === adminsigninenteredpass) 
+            {
+                props.setIsLoggedIn(true);
+                return;
+            }
         }
+        toastr.options = {
+            "closeButton": true,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr.clear();
+        setTimeout(() => toastr.error(`Enter Correct Email and Password`), 300);
     }
 
     const usercheck = async () => {
