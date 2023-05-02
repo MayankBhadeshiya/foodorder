@@ -89,8 +89,7 @@ export default function Homenavbar(props) {
                         <div className="relative group hidden 2xl:flex">
                             {categoriesdata.map((obj, i) => {
                                 return (
-                                    <>
-                                        <div className="px-4 mt-1" id={`drop-${i}`}>
+                                        <div className="px-4 mt-1" id={`drop-${i}`} key={i}>
                                             <div className="group inline-block relative">
                                                 <button
                                                     className="font-semibold py-2 px-1 rounded inline-flex items-center"
@@ -103,7 +102,6 @@ export default function Homenavbar(props) {
                                                 </ul>
                                             </div>
                                         </div>
-                                    </>
                                 );
                             })}
 
@@ -119,24 +117,22 @@ export default function Homenavbar(props) {
                 </div>
                 <div className="bg-white h-auto pb-5 w-auto mt-20 pt-5" style={{ display: sidebarclicked ? 'flex' : 'none' }}>
                     <div className="container flex flex-row-reverse justify-between mx-auto">
-                        <div><i class="fa-solid fa-xmark fa-2xl pr-5" style={{ color: "#a61f07" }} onClick={sidebarcloseHandler}></i></div>
+                        <div><i className="fa-solid fa-xmark fa-2xl pr-5" style={{ color: "#a61f07" }} onClick={sidebarcloseHandler}></i></div>
                         <div>{categoriesdata.map((obj, i) => {
                             return (
-                                <>
-                                    <div className="px-4 mt-1" id={`drop-${i}`}>
+                                    <div className="px-4 mt-1" id={`drop-${i}`} key={i}>
                                         <div className="group inline-block relative">
                                             <button
-                                                className="font-semibold py-2 px-1 rounded inline-flex justify-start w-80 bg-slate-300 text-black hover:bg-slate-300"
+                                                className="font-semibold py-2 px-1 rounded inline-flex justify-start w-72 bg-slate-300 text-black hover:bg-slate-300"
                                                 onClick={setsidedropdownHandler} value={i}>
                                                 {obj}
 
                                             </button>
-                                            <ul className="relative hidden text-gray-700 w-80" value={i} id={`sidedown-${i}`}>
+                                            <ul className="relative hidden text-gray-700 w-72" value={i} id={`sidedown-${i}`}>
                                                 <Navbarsubcategory data={subcategoriesdata[i]} sidebarcloseHandler={sidebarcloseHandler}></Navbarsubcategory>
                                             </ul>
                                         </div>
                                     </div>
-                                </>
                             );
                         })}</div>
                     </div>

@@ -28,14 +28,12 @@ export default function Adminlogin(props) {
     } = useInput((value) => value.trim() !== '' && value.length > 6);
 
     const checkuser = (data) => {
-        console.log(data);
         for (let obj in data) {
             data[obj].email === adminsigninenteredemail && data[obj].Password === adminsigninenteredpass && props.setIsLoggedIn(true);
         }
     }
 
     const usercheck = async () => {
-        console.log("In");
         await fetch('https://react-6784b-default-rtdb.firebaseio.com/adminusers.json', {
             method: 'GET',
         })

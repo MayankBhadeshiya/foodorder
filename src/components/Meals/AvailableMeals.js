@@ -5,7 +5,6 @@ export default function AvailableMeals() {
   const [data, setData] = useState(null);
   const [categoriesdata, setCategoriesdata] = useState([]);
 
-
   useEffect(() => {
     setCategoriesdata([]);
     for (let obj in data) {
@@ -22,8 +21,6 @@ export default function AvailableMeals() {
       .then((response) => response.json())
       .then((y) => setData(y));
   }, []);
-
-  console.log(categoriesdata);
 
   return (
     <div className='-mt-24'>
