@@ -1,13 +1,15 @@
-import React,{useState} from 'react';
-import ShowOrder from './ShowOrder';
-import AddMeal from './AddMeal';
+import React from 'react';
 import classes from './Admin.module.css';
-import img2 from '../../assets/meals.jpg'
+import img2 from '../../assets/meals.jpg';
+import { useNavigate, Outlet } from 'react-router-dom';
 
 export default function Admin(props) {
- const [addMeal,setAddMeal]=useState(false)
-    const handleClick = () => {
-        setAddMeal(!addMeal)
+    const navigate = useNavigate()
+    const handleOrderClick = () => {
+        navigate('ShowOrder')
+    }
+    const handleAddMealClick = () => {
+        navigate('AddMeal')
     }
 
     const myStyle = {
@@ -20,20 +22,23 @@ export default function Admin(props) {
         props.setIsLoggedIn(false);
     }
 
-    let btn = !addMeal ? 'Add Meal' : 'Orders'
     return (
         <div style={myStyle} className='h-screen overflow-auto'>
             <header className={classes.header}>
                 <h2 className='font-bold text-3xl'>Admin Panel</h2>
                 <div style={{display:"flex"}}>
-                    <button onClick={handleClick}>{btn}</button>
                     <button style={{ backgroundColor: '#8a2b06', border: "none" }} onClick={logoutHandler}><i className="fa-solid fa-right-from-bracket fa-2xl"></i></button>
                 </div>
             </header>
-            <main className={classes.main} style={{minWidth: '670px'}}>
-                {addMeal && <AddMeal />}
-                {!addMeal && <ShowOrder />}
-            </main>
+            <div className='grid grid-cols-5'>
+                <div className='bg-white h-screen pt-24'>
+                    <div className='text-black text-center text cursor-pointer text-xl hover:font-bold my-5 ' onClick={handleAddMealClick}>Add meals</div>
+                    <div className='text-black text-center text cursor-pointer text-xl hover:font-bold' onClick={handleOrderClick}>Orders</div>
+                </div>
+                <div className='col-span-4 overflow-auto h-screen pt-24'>
+                    <Outlet></Outlet>
+                </div>
+            </div>
         </div>
     );
 }
