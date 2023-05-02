@@ -94,6 +94,8 @@ function AddMeal() {
     addMealHandler(meal, selectedcategory, selectedsubcategory);
     console.log('data is added')
 
+    event.target.elements.Category.value = '';
+    event.target.elements.SubCategory.value = '';
     resetName();
     resetimg();
     resetDescription();
