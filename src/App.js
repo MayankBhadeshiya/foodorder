@@ -4,6 +4,8 @@ import Signup from './components/Signup/Signup';
 import Adminbase from './components/Adminbase/Adminbase';
 import AddMeal from './components/admin/AddMeal';
 import ShowOrder from './components/admin/ShowOrder';
+import UpdateMeal from './components/admin/UpdateMeal';
+import AddCategory from './components/admin/AddCategory';
 
 function App() {
 
@@ -15,6 +17,8 @@ function App() {
         <Route path='/Admin' Component={Adminbase} >
           <Route path='/Admin/AddMeal' Component={AddMeal} />
           <Route path='/Admin/ShowOrder' Component={ShowOrder} />
+          <Route path='/Admin/UpdateMeal' Component={UpdateMeal} />
+          <Route path='/Admin/AddCategory' Component={AddCategory} />
         </Route>
       </Routes>
     </BrowserRouter>
