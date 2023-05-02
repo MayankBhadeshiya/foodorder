@@ -41,11 +41,11 @@ export default function Admin(props) {
             </header>
             <div className='grid grid-cols-5'>
                 <div className='bg-white h-screen pt-24'>
-                    <div className='text-black text-center text cursor-pointer text-xl hover:font-bold my-5' onClick={handleAddMealClick}>Add meals</div>
                     <div className='text-black text-center text cursor-pointer text-xl hover:font-bold my-5' onClick={handleOrderClick}>Orders</div>
-                    <div className='text-black text-center text cursor-pointer text-xl hover:font-bold my-5' onClick={handleUpdateMealClick}>Update meals</div>
                     <div className='text-black text-center text cursor-pointer text-xl hover:font-bold my-5' onClick={handleAddCategoryClick}>Add Category</div>
                     <div className='text-black text-center text cursor-pointer text-xl hover:font-bold my-5' onClick={handleAddSubCategoryClick}>Add Sub-Category</div>
+                    <div className='text-black text-center text cursor-pointer text-xl hover:font-bold my-5' onClick={handleAddMealClick}>Add meals</div>
+                    <div className='text-black text-center text cursor-pointer text-xl hover:font-bold my-5' onClick={handleUpdateMealClick}>Update meals</div>
                 </div>
                 <div className='col-span-4 overflow-auto h-screen pt-24'>
                     <Outlet></Outlet>
