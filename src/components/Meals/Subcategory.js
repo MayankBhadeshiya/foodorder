@@ -15,7 +15,9 @@ export default function Subcategory(props) {
         <div >
             {subcategoriesdata.map((obj) => {
                 return (
+                    
                     <div key={obj.category} id={obj.category} className='scroll-mt-28 mt-12'>
+                        {console.log(obj.category)}
                         <p className='text-white mt-5 text-start text-xl font-bold uppercase ms-6 underline underline-offset-4'>{obj.category}</p>
                         <Products data={obj.data}></Products>
                     </div>

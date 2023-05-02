@@ -13,6 +13,7 @@ export default function Homenavbar(props) {
     const [data, setData] = useState(null);
     const [categoriesdata, setCategoriesdata] = useState([]);
     const [subcategoriesdata, setSubcategoriesdata] = useState([]);
+    const [sidebarclicked, setSidebarclicked] = useState(false);
 
     useEffect(() => {
         setCategoriesdata([]);
@@ -44,47 +45,101 @@ export default function Homenavbar(props) {
         }
     }
 
+    const setsidedropdownHandler = (e) => {
+        let box = document.getElementById("sidedown-" + e.target.value)
+        if (box.classList.contains("hidden")) {
+            box.classList.remove("hidden");
+        }
+        else {
+            box.classList.add("hidden");
 
-    // console.log(subcategoriesdata)
+        }
+    }
+
+    const sidebarHandler = (e) => {
+        setSidebarclicked(true);
+        let box = document.getElementById("hamburger")
+        if (box.classList.contains("hidden")) {
+            box.classList.remove("hidden");
+        }
+        else {
+            box.classList.add("hidden");
+        }
+        window.scrollTo({top:0,behavior:'smooth'})
+    }
+
+    const sidebarcloseHandler = (e) => {
+        setSidebarclicked(false);
+        let box = document.getElementById("hamburger")
+        if (box.classList.contains("hidden")) {
+            box.classList.remove("hidden");
+        }
+        else {
+            box.classList.add("hidden");
+        }
+    }
+
     return (
         <div>
-            <header className={classes.header}>
-                <div className="flex">
-                    <h2 className="font-bold text-3xl mt-5 mr-10">FoodOrder</h2>
-                    <div className="relative group hidden 2xl:flex">
-                        {categoriesdata.map((obj, i) => {
+            <header >
+                <div className={classes.header}>
+                    <div className="flex">
+                        <div><i className="fa-solid fa-bars fa-2xl mt-6 2xl:hidden -ml-6" style={{ color: "#ffffff"}} onClick={sidebarHandler} id="hamburger"></i></div>
+                        <h2 className="font-bold text-3xl mt-1 mr-10 ml-1">FoodOrder</h2>
+                        <div className="relative group hidden 2xl:flex">
+                            {categoriesdata.map((obj, i) => {
+                                return (
+                                    <>
+                                        <div className="px-4 mt-1" id={`drop-${i}`}>
+                                            <div className="group inline-block relative">
+                                                <button
+                                                    className="font-semibold py-2 px-1 rounded inline-flex items-center"
+                                                    onClick={setdropdownHandler} value={i} style={{ backgroundColor: '#8a2b06' }}>
+                                                    {obj}
+
+                                                </button>
+                                                <ul className="absolute hidden text-gray-700 w-auto" value={i} id={`down-${i}`}>
+                                                    <Navbarsubcategory data={subcategoriesdata[i]} sidebarcloseHandler={sidebarcloseHandler}></Navbarsubcategory>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </>
+                                );
+                            })}
+
+                        </div>
+                    </div>
+
+                    <div style={{ display: "flex" }} className="-ml-6">
+                        <HeaderCartButton onClick={props.onShowCart} />
+                        <button className={classes.bt} onClick={logoutHandler}>
+                            <i className="fa-solid fa-right-from-bracket fa-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+                <div className="bg-white h-auto pb-5 w-auto mt-20 pt-5" style={{ display: sidebarclicked ? 'flex' : 'none' }}>
+                    <div className="container flex flex-row-reverse justify-between mx-auto">
+                        <div><i class="fa-solid fa-xmark fa-2xl pr-5" style={{ color: "#a61f07" }} onClick={sidebarcloseHandler}></i></div>
+                        <div>{categoriesdata.map((obj, i) => {
                             return (
                                 <>
-                                    {console.log(subcategoriesdata)}
-                                    <div className="p-5" id={`drop-${i}`}>
+                                    <div className="px-4 mt-1" id={`drop-${i}`}>
                                         <div className="group inline-block relative">
                                             <button
-                                                className="font-semibold py-2 px-4 rounded inline-flex items-center"
-                                                onClick={setdropdownHandler} value={i} style={{ backgroundColor: '#8a2b06' }}>
+                                                className="font-semibold py-2 px-1 rounded inline-flex justify-start w-80 bg-slate-300 text-black hover:bg-slate-300"
+                                                onClick={setsidedropdownHandler} value={i}>
                                                 {obj}
 
                                             </button>
-                                            <ul className="absolute hidden text-gray-700" value={i} id={`down-${i}`}>
-                                                {/* <li className="">
-                                                    <a
-                                                        className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                                                        href="#">One</a>
-                                                </li> */}
-                                                <Navbarsubcategory data={subcategoriesdata[i]}></Navbarsubcategory>
+                                            <ul className="relative hidden text-gray-700 w-80" value={i} id={`sidedown-${i}`}>
+                                                <Navbarsubcategory data={subcategoriesdata[i]} sidebarcloseHandler={sidebarcloseHandler}></Navbarsubcategory>
                                             </ul>
                                         </div>
                                     </div>
                                 </>
                             );
-                        })}
-
+                        })}</div>
                     </div>
-                </div>
-                <div style={{ display: "flex" }}>
-                    <HeaderCartButton onClick={props.onShowCart} />
-                    <button className={classes.bt} onClick={logoutHandler}>
-                        <i className="fa-solid fa-right-from-bracket fa-2xl"></i>
-                    </button>
                 </div>
             </header>
             <div className={classes["main-image"]}>
