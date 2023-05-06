@@ -17,7 +17,7 @@ function OrderItem(props) {
         return (
             <div key={i.iname} className='pb-2'>
                 <div><strong>Item: </strong>{i.iname}</div>
-                <div><strong>Contity: </strong>{i.contity}</div>
+                <div><strong>Quantity: </strong>{i.contity}</div>
                 <div><strong>Price for that: </strong> ₹ {i.price * i.contity} </div>
             </div>
         )
