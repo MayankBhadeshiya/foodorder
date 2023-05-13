@@ -40,7 +40,7 @@ export default function Table(props) {
                         <>
                         <div key={d.id} className='grid grid-cols-3 py-2'>
                                 <div className='col-span-2'>
-                                <div className='text-lg'><strong>Ordrt id:</strong> {d.id}</div>
+                                <div className='text-lg'><strong>Order id:</strong> {d.id}</div>
                                 <div><strong>User Name:</strong> {d.uname}</div>
                                 <div><strong>User Address:</strong> {d.street},{d.city},{d.pinCode}</div>
                             </div>
